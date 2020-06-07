@@ -181,7 +181,7 @@ func parse(s string, state int) (namespace string, className string, keyBindings
 			if '"' == c {
 				keyBindings = append(keyBindings, CimKeyBinding{
 					Name:     propertyName,
-					KeyValue: &CimKeyValue{Type: propertyType, Value: buf.String()},
+					KeyValue: &CimKeyValue{ValueType: propertyType, Value: buf.String()},
 				})
 				buf.Reset()
 				state = state_property_value_qouted_end
@@ -205,7 +205,7 @@ func parse(s string, state int) (namespace string, className string, keyBindings
 			if ',' == c {
 				keyBindings = append(keyBindings, CimKeyBinding{
 					Name:     propertyName,
-					KeyValue: &CimKeyValue{Type: propertyType, Value: buf.String()},
+					KeyValue: &CimKeyValue{ValueType: propertyType, Value: buf.String()},
 				})
 				buf.Reset()
 				state = state_property_name_begin
